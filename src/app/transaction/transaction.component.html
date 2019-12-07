@@ -1,0 +1,21 @@
+<div>
+  <h2>Transaction Add</h2>
+  <div>
+    <label>Name:
+      <input [(ngModel)]="transactionData.name" placeholder="Transaction Name" />
+    </label><br>
+
+    <label>Amount:
+      <input [(ngModel)]="transactionData.amount" placeholder="Transaction Amount" />
+    </label><br>
+
+    <label>Source Account:
+      <input [(ngModel)]="transactionData.SourceId" placeholder="Transaction Source Account" />
+    </label><br>
+
+    <label>Target Account:
+      <input [(ngModel)]="transactionData.TargetId" placeholder="Transaction Target Account" />
+    </label><br>
+  </div>
+  <button (click)="addTransaction()">Save</button>
+</div>

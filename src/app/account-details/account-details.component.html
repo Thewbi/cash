@@ -1,0 +1,15 @@
+<h2>Account Details</h2>
+
+<p>Name: {{account.name}}</p>
+
+<p>Amount: {{account.totalAmount}}</p>
+
+<ul class="transactions">
+  <li *ngFor="let t of transactions; let i=index;">
+    <p>{{t.id}}</p>
+    <p>{{t.name}}</p>
+    <p>{{t.amount}}</p>
+    <p>{{t.SourceId}}</p>
+    <p>{{t.TargetId}}</p>
+  </li>
+</ul>

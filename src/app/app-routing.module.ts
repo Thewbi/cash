@@ -10,6 +10,8 @@ import { TransactionComponent } from './transaction/transaction.component';
 
 const routes: Routes = [
 
+  { path: '', redirectTo: '/accounts', pathMatch: 'full' },
+
   {
     path: 'accounts',
     component: AccountComponent,

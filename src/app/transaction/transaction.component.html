@@ -1,21 +1,34 @@
+<a href="/accounts">Accounts</a>
+
 <div>
   <h2>Transaction Add</h2>
   <div>
     <label>Name:
       <input [(ngModel)]="transactionData.name" placeholder="Transaction Name" />
-    </label><br>
+    </label>
+    <br>
 
     <label>Amount:
       <input [(ngModel)]="transactionData.amount" placeholder="Transaction Amount" />
-    </label><br>
+    </label>
+    <br>
 
     <label>Source Account:
-      <input [(ngModel)]="transactionData.SourceId" placeholder="Transaction Source Account" />
-    </label><br>
+      <select [(ngModel)]="transactionData.SourceId">
+        <option *ngFor="let virtualAccount of accounts" [ngValue]="virtualAccount.id">{{virtualAccount.name}}</option>
+      </select>
+    </label>
+    <br>
 
     <label>Target Account:
-      <input [(ngModel)]="transactionData.TargetId" placeholder="Transaction Target Account" />
-    </label><br>
+      <select [(ngModel)]="transactionData.TargetId">
+        <option *ngFor="let virtualAccount of accounts" [ngValue]="virtualAccount.id">{{virtualAccount.name}}</option>
+      </select>
+    </label>
+    <br>
+    <label>Date Time 2:
+      <angular2-date-picker [(ngModel)]="transactionData.dateTime" [settings]="settings"></angular2-date-picker>
+    </label>
   </div>
   <button (click)="addTransaction()">Save</button>
 </div>

@@ -23,22 +23,29 @@ export class AccountComponent implements OnInit {
   }
 
   getAccounts() {
-
-    console.log('getAccounts');
-
     this.accounts = [];
-
     this.accountService.getAccounts().subscribe((data: {}) => {
-
-      console.log(data);
       this.accounts = data;
+
+      for (var i = 0; i < this.accounts.length; i++) {
+
+        var account = this.accounts[i];
+
+        if (!account.totalAmount) {
+          account.totalAmount = 0;
+        }
+
+        // convert cent to decimal
+        account.totalAmountFormatted = account.totalAmount / 100.0;
+      }
     });
   }
 
   addAccount() {
-
     this.accountService.addAccount(this.accountData).subscribe((result) => {
-
+      result.totalAmount = 0;
+      result.totalAmountFormatted = result.totalAmount / 100.0;
+      this.accounts.push(result)
     }, (err) => {
       console.log(err);
     });

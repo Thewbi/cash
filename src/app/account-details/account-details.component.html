@@ -1,15 +1,36 @@
+<a href="/accounts">Accounts</a><br />
+<a href="/transactions">Transactions</a>
+
 <h2>Account Details</h2>
 
-<p>Name: {{account.name}}</p>
+<p>ID: {{account?.id}}</p>
+<p>Name: {{account?.name}}</p>
+<p>Amount: {{account?.totalAmountFormatted | currency:'EUR':'symbol':'1.2-2':'de'}}</p>
 
-<p>Amount: {{account.totalAmount}}</p>
+<h2>Transactions</h2>
 
-<ul class="transactions">
-  <li *ngFor="let t of transactions; let i=index;">
-    <p>{{t.id}}</p>
-    <p>{{t.name}}</p>
-    <p>{{t.amount}}</p>
-    <p>{{t.SourceId}}</p>
-    <p>{{t.TargetId}}</p>
-  </li>
-</ul>
+<table>
+  <tr>
+    <th *ngFor="let column of columns">
+      {{column}}
+    </th>
+  </tr>
+  <tr *ngFor="let transaction of transactions">
+
+    <td>{{transaction.id}}</td>
+    <td>{{transaction.name}}</td>
+    <td>{{transaction.amount}}</td>
+
+    <td>{{transaction.amountFormatted | currency:'EUR':'symbol':'1.2-2':'de'}}</td>
+
+    <td>{{transaction.SourceId}}</td>
+    <td>{{transaction.TargetId}}</td>
+
+    <td>{{transaction.createdAt}}</td>
+    <td>{{transaction.localCreatedAt}}</td>
+
+    <td>{{transaction.dateTime}}</td>
+    <td>{{transaction.localDateTime}}</td>
+
+  </tr>
+</table>

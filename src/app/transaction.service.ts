@@ -11,11 +11,7 @@ export class TransactionService {
 
   constructor(private http: HttpClient) { }
 
-
-
   addTransaction(transaction): Observable<any> {
-
-    console.log(transaction);
 
     const endpoint = 'http://localhost:3000/';
 
@@ -28,7 +24,6 @@ export class TransactionService {
     return this.http
       .post<any>(endpoint + 'transactions/create/', JSON.stringify(transaction), httpOptions)
       .pipe(
-
         tap((product) => console.log(`added transaction w/ id=${transaction.id}`)),
         catchError(this.handleError<any>('addTransaction'))
       );

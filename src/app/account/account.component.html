@@ -1,4 +1,4 @@
-<h2>Account List</h2>
+<a href="transactions">Transactions</a>
 
 <div>
   <h2>Account Add</h2>
@@ -14,11 +14,13 @@
   <button (click)="addAccount()">Save</button>
 </div>
 
+<h2>Account List</h2>
+
 <ul class="accounts">
-  <li *ngFor="let a of accounts; let i=index;">
-    <a routerLink="/account-details/{{a.id}}">
-      <span class="badge">{{i+1}}</span> {{a.name}}
+  <li *ngFor="let account of accounts; let i=index;">
+    <a routerLink="/account-details/{{account.id}}">
+      {{account.name}}
+      - {{account.totalAmountFormatted | currency:'EUR':'symbol':'1.2-2':'de'}}
     </a>
-    <button class="delete" title="delete account" (click)="delete(a.id)">delete</button>
   </li>
 </ul>

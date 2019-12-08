@@ -24,8 +24,6 @@ export class AccountDetailsComponent implements OnInit {
     'Amount Formatted',
     'Source Account',
     'Target Account',
-    'Date UTC',
-    'Date Local',
     'DateTime UTC',
     'DateTime Local'
   ];

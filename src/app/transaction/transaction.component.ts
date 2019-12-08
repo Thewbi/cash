@@ -16,7 +16,14 @@ export class TransactionComponent implements OnInit {
 
   accounts: any = [];
 
-  @Input() transactionData: any = { name: '', amount: 0, SourceId: 0, TargetId: 0, dateTime: new Date() };
+  @Input() transactionData: any = {
+    name: '',
+    amount: 0,
+    SourceId: 0,
+    TargetId: 0,
+    dateTime: new Date(),
+    apply: true
+  };
 
   // https://github.com/CuppaLabs/angular2-datetimepicker
   settings = {
@@ -44,14 +51,9 @@ export class TransactionComponent implements OnInit {
 
   addTransaction() {
 
-    console.log('datetime:', this.transactionData);
-
     // convert local date to UTC
     var dateLocal = moment(this.transactionData.dateTime);
     var dateUTC = moment.utc(dateLocal).format();
-
-    console.log(dateUTC);
-
     this.transactionData.dateTime = dateUTC;
 
     console.log('datetime:', this.transactionData);

@@ -3,13 +3,16 @@
 <div>
   <h2>Account Add</h2>
   <div>
+
     <label>Name:
       <input [(ngModel)]="accountData.name" placeholder="Account Name" />
     </label>
     <br>
+
     <label>Virtual:
       <input type="checkbox" [(ngModel)]="accountData.virtual" [checked]="accountData.virtual" />
     </label>
+
   </div>
   <button (click)="addAccount()">Save</button>
 </div>

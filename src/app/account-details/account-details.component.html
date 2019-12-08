@@ -21,13 +21,18 @@
     <td>{{transaction.name}}</td>
     <td>{{transaction.amount}}</td>
 
-    <td>{{transaction.amountFormatted | currency:'EUR':'symbol':'1.2-2':'de'}}</td>
+    <td>
+      <p *ngIf="transaction.SourceId == account?.id">
+        <font color="red">{{transaction.amountFormatted | currency:'EUR':'symbol':'1.2-2':'de'}}</font>
+      </p>
+
+      <p *ngIf="transaction.SourceId != account?.id">
+        <font color="green">{{transaction.amountFormatted | currency:'EUR':'symbol':'1.2-2':'de'}}</font>
+      </p>
+    </td>
 
     <td>{{transaction.SourceId}}</td>
     <td>{{transaction.TargetId}}</td>
-
-    <td>{{transaction.createdAt}}</td>
-    <td>{{transaction.localCreatedAt}}</td>
 
     <td>{{transaction.dateTime}}</td>
     <td>{{transaction.localDateTime}}</td>

@@ -22,7 +22,6 @@ import { MatMomentDatetimeModule } from '@mat-datetimepicker/moment';
 import { MatDatetimepickerModule } from '@mat-datetimepicker/core';
 
 import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
-import { CustomCurrency } from './customcurrency.pipe';
 
 registerLocaleData(localeDe);
 
@@ -31,8 +30,7 @@ registerLocaleData(localeDe);
     AppComponent,
     AccountComponent,
     AccountDetailsComponent,
-    TransactionComponent,
-    CustomCurrency
+    TransactionComponent
   ],
   imports: [
     BrowserModule,
@@ -53,8 +51,7 @@ registerLocaleData(localeDe);
   providers: [
     { provide: LOCALE_ID, useValue: 'de-DE' },
     MatDatepickerModule,
-    CurrencyPipe,
-    CustomCurrency
+    CurrencyPipe
   ],
   bootstrap: [AppComponent]
 })

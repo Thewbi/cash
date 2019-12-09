@@ -29,6 +29,23 @@ export class TransactionService {
       );
   }
 
+  deleteTransaction(transactionId): Observable<any> {
+
+    const endpoint = 'http://localhost:3000/';
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http
+      .delete<any>(endpoint + 'transactions/delete/' + transactionId, httpOptions)
+      .pipe(
+        catchError(this.handleError<any>('deleteTransaction'))
+      );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 

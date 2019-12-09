@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 
@@ -21,6 +22,7 @@ import { MatMomentDatetimeModule } from '@mat-datetimepicker/moment';
 import { MatDatetimepickerModule } from '@mat-datetimepicker/core';
 
 import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
+import { CustomCurrency } from './customcurrency.pipe';
 
 registerLocaleData(localeDe);
 
@@ -29,7 +31,8 @@ registerLocaleData(localeDe);
     AppComponent,
     AccountComponent,
     AccountDetailsComponent,
-    TransactionComponent
+    TransactionComponent,
+    CustomCurrency
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,9 @@ registerLocaleData(localeDe);
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'de-DE' },
-    MatDatepickerModule
+    MatDatepickerModule,
+    CurrencyPipe,
+    CustomCurrency
   ],
   bootstrap: [AppComponent]
 })

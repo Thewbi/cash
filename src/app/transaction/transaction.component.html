@@ -7,9 +7,10 @@
       <input [(ngModel)]="transactionData.name" placeholder="Transaction Name" />
     </label>
     <br>
-
-    <label>Amount:
-      <input [(ngModel)]="transactionData.amount" placeholder="Transaction Amount" />
+    <label>Amount (EUR CENT):
+      <input type="text" [ngModel]="transactionData.amount" (ngModelChange)="transformAmount($event)"
+        placeholder="Transaction Amount" style="visibility: normal;" required />
+      {{(transactionData.amount / 100.0) | currency:'EUR':'symbol':'1.2-2'}}
     </label>
     <br>
 
@@ -37,5 +38,5 @@
     </label>
 
   </div>
-  <button (click)="addTransaction()">Save</button>
+  <button (click)="confirmAddTransaction(transactionData)">Save</button>
 </div>

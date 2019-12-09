@@ -5,6 +5,7 @@ import * as moment from 'moment';
 
 import { AccountService } from '../account.service';
 import { AccountDetailsService } from '../account-details.service';
+import { TransactionService } from '../transaction.service';
 
 @Component({
   selector: 'app-account-details',
@@ -30,6 +31,7 @@ export class AccountDetailsComponent implements OnInit {
 
   constructor(public accountService: AccountService,
     public accountDetailsService: AccountDetailsService,
+    public transactionService: TransactionService,
     private route: ActivatedRoute,
     private router: Router) { }
 
@@ -73,5 +75,26 @@ export class AccountDetailsComponent implements OnInit {
         transaction.amountFormatted = transaction.amount / 100.0;
       }
     });
+  }
+
+  delete(transactionId) {
+
+    this.transactionService.deleteTransaction(transactionId).subscribe((result) => {
+
+      // delete the removed transaction from the list of transactions
+      var index = this.transactions.findIndex(t => t.id == transactionId);
+      if (index > -1) {
+        this.transactions.splice(index, 1);
+      }
+
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
+  confirmDelete(name: string, transactionId: any) {
+    if (confirm("Are you sure to delete the transaction " + name)) {
+      this.delete(transactionId);
+    }
   }
 }

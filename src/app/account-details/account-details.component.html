@@ -16,26 +16,23 @@
     </th>
   </tr>
   <tr *ngFor="let transaction of transactions">
-
     <td>{{transaction.id}}</td>
     <td>{{transaction.name}}</td>
     <td>{{transaction.amount}}</td>
-
     <td>
       <p *ngIf="transaction.SourceId == account?.id">
         <font color="red">{{transaction.amountFormatted | currency:'EUR':'symbol':'1.2-2':'de'}}</font>
       </p>
-
       <p *ngIf="transaction.SourceId != account?.id">
         <font color="green">{{transaction.amountFormatted | currency:'EUR':'symbol':'1.2-2':'de'}}</font>
       </p>
     </td>
-
     <td>{{transaction.SourceId}}</td>
     <td>{{transaction.TargetId}}</td>
-
     <td>{{transaction.dateTime}}</td>
     <td>{{transaction.localDateTime}}</td>
-
+    <td>
+      <button class="delete" title="Delete" (click)="confirmDelete(transaction.name, transaction.id)">Delete</button>
+    </td>
   </tr>
 </table>
